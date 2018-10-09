@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <!--宽度等于设备宽度                           一倍的缩放-->
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+Hello
+<script type="text/javascript">
+  function get(url) {
+    return new Promise((resolve, reject) => {
+      let xmlHttp = new XMLHttpRequest()
+      document.cookie = 'name=kobe'
+      xmlHttp.withCredentials = true
+      xmlHttp.open("GET", url,true)
+      xmlHttp.open("PUT", url,true)
+      xmlHttp.setRequestHeader('name','kobe')
+      xmlHttp.send();
+      xmlHttp.onreadystatechange = function () {
+        if (xmlHttp.readyState === 4) {
+          if (xmlHttp.status >= 200 && xmlHttp.status <300 || xmlHttp.status === 304) {
+            resolve(xmlHttp.responseText)
+            console.log(xmlHttp.getResponseHeader('name'))
+          } else {
+            reject()
+          }
+        }
+      }
+    })
+  };
+  get('http://localhost:4000/getDate')
+    .then(data => {
+      // console.log(JSON.parse(data))
+      console.log(data)
+    })
+
+  //标准IP查询-查找IP地址的数据背后的http ：//api.ipstack.com/ 134.201.250.155？access_key = YOUR_ACCESS_KEY
+  //http://api.ipstack.com/ 122.234.62.126?access_key=92729779b2303432f37ea834204ae448
+
+  //可选参数：
+
+  // ＆fields = ip ，location ，security＆hostname = 1＆security = 1＆language = en＆callback = MY_CALLBACK＆output = json
+
+
+</script>
+</body>
+</html>

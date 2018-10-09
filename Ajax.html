@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>前端开发</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.css" rel="stylesheet">
+  <link rel="stylesheet" href="style/main.css">
+  <link rel="stylesheet" media="(max-width: 865px)" href="./style/mobile.css">
+  <script src="js/jquery-1.12.3.js"></script>
+</head>
+<body>
+<div class="side-bar">
+  <label id="menu-toggle" for="menu-checkbox">菜单</label>
+  <input id="menu-checkbox" type="checkbox">
+  <div class="header">
+    <a href="index.html" class="logo">林同明</a>
+    <div class="intro">打不死的小强，生生不息！！！</div>
+  </div>
+  <div class="nav-wrp">
+    <div class="nav col-5">
+      <a href="#" class="item">关于我</a>
+      <a href="#" class="item">联系我</a>
+      <a href="#" class="item">捐助我</a>
+    </div>
+    <div class="tag-list col-5">
+      <a href="#" class="item">#夸夸我</a>
+      <a href="#" class="item">#抱抱我</a>
+      <a href="#" class="item">#亲亲我</a>
+    </div>
+  </div>
+</div>
+<div class="main">
+  <div class="article-list">
+    <div class="item">
+      <a href="Ajax.html" class="title">ajax</a>
+      <div class="status">发布于：2018-10-06 | 阅读： 99 | 标签：#JS #AJAX</div>
+      <div class="content">
+        <h4>服务器响应处理：</h4>
+        <p>
+          responseText ： 获得字符串形式的响应数据。<br>
+          responseXML ： 获得 XML 形式的响应数据。<br>
+          异步处理：获取请求状态码做出相应处理。<br>
+          readystatechange ：返回状态码触发 <br>
+          readyState ： 请求状态 <br>
+          readyStatus：响应状态码 <br>
+        </p>
+        <h4>一共有5种请求状态，从 0 到 4 发生变化：</h4>
+        <p>
+          0：请求未初始化，尚未调用open()方法；<br>
+          1：服务器连接已建立，调用open()方法，未调用send()方法；<br>
+          2：请求已接收，已经调用send()方法，未接收到响应；<br>
+          3：请求处理中，已经接收到部分响应的数据；<br>
+          4：请求完成，且响应已就绪，已经接收到全部响应的数据；<br>
+        </p>
+
+        <h4>XMLHttpRequest.status:响应状态码</h4>
+        <p>
+          1** 请求收到，继续处理 <br>
+          2** 操作成功收到，分析、接收 <br>
+          3** 完成此请求必须进一步处理 <br>
+          4** 请求包含一个错误语法或不能完成 <br>
+          5** 服务器执行一个完全有效 请求失败 <br>
+          200：'成功'<br>
+          403：服务器拒绝请求 <br>
+          404：服务器找不到请求的网页 <br>
+          408：服务器等候请求时发生超时 <br>
+          500：服务器内部错误，无法完成请求 <br>
+        </p>
+        <h4>Ajax解决浏览器缓存问题的几种解决方法</h4>
+        <p>
+          1. 在ajax发送请求前加上 <br>
+          anyAjaxObj.setRequestHeader('if-Modified-Since','0')<br>
+          2. 第二种 <br>
+          anyAjaxObj.setRequestHeader('Cache-Control','no-cache')<br>
+          3.IE中ajax的缓存问题 <br>
+          4.在url后面加上时间戳 <br>
+          "url=" + new Date().getTime(); <br>
+          5.使用jquery直接写 <br>
+          $.ajaxSetup{{ cache:false }};
+        </p>
+        <h4>同步和异步的区别</h4>
+        <p>
+          同步：我的理解是一种线性的执行方式，执行的流程不能跨越。一般用于流程性比较强的程序，我们做的用户登陆功能也是同步处理的，必须用户通过用户名和密码验证后才能进入系统操作
+        </p>
+        <p>
+          异步：是一种并行的执行方式，不需要等待一个程序执行完就可以执行其他的任务。在程序中异步处理的结果一般是由回调函数来处理结果。
+        </p>
+        <p>
+          在js中实现异步的方式主要由ajax和H5新增的 web worker
+        </p>
+        <h2>跨域：</h2>
+        <h5>什么是跨域：</h5>
+        <p>
+          基于javascript的安全，JS同源策略要求一个网站不能调用其他网站的js对象。<br>
+          构成跨域的条件就是一个页面的url协议、域名、端口与另一个页面的url只要有一个不同就构成了跨域请求
+        </p>
+        <h6>特别注意两点：</h6>
+        <p>
+          第一： 如果是协议和端口造成的跨域问题"前台"是无能为力的，<br>
+          第二： 在跨域问题上，域仅仅是通过"url的首部"来识别而不会根据域名对应的IP地址是否相同来判断。<br>
+          "url的首部"可以理解为"协议、域名 和端口 必须匹配"。
+        </p>
+        <h5>解决跨域的方法：</h5>
+        <h6>JSONP</h6>
+        比较弱
+        <p>
+          JSONP也叫填充式JSON，是应用JSON的一种新方法，只不过是被包含在函数调用中的JSON。callback({"name","kobe"});<br>
+          JSONP由两部分组成：回调函数和数据。回调函数是当响应到来时应该在页面中调用的函数，而数据就是传入回调函数中的JSON数据。<br>
+          在JS中，我们直接用XMLHttpRequest请求不同域上的数据，是不可以的。但是，在页面上引入不同域上的js脚本文件却是可以的，jsonp正是利用这个特性来实现的。<br>
+          只能发送get请求 不支持post put delete <br>
+          不安全 xss攻击 如果别人的网站夹带脚本就会带进自己的页面里
+          <script type="text/javascript">
+
+            // http://suggestion.baidu.com/su?wd=a&cb=show
+            function jsonp({url,params,cb}) {
+              return new Promise((resolve,reject)=>{
+                let script = document.createElement('script');
+                window[cb] = function (data) {
+                  resolve(data);
+                  document.body.removeChild(script);
+                }
+                params = {...params,cb}
+                let arrs = [];
+                for (let key in params) {
+                  arrs.push(`${key}=${params[key]}`)
+                }
+                script.src = `${url}?${arrs.join('&')}`;
+                document.body.appendChild(script);
+              })
+            }
+            jsonp({
+              url: 'http://localhost:3000/say',
+              params: {wd:'我爱你'},
+              cb:'show'
+            }).then(data => {
+              console.log(data)
+            })
+
+          </script>
+
+        </p>
+        <h6>cors</h6>
+        <p>
+          纯后端提供 最靠谱 最常用 安全性高
+        </p>
+        <h6>postMessage</h6>
+        面试问的多 两个页面之间可以通信靠他
+        <h6>document.domain</h6>
+        二级域名、一级域名 同一个域下 子域父域
+        <h6>window.name</h6>
+          实现跨域 比较恶心
+        <h6>location.hash</h6>
+
+        <h6>http-proxy</h6>
+
+        <h6>ng inx</h6>
+
+        <h6>websocket</h6>
+
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

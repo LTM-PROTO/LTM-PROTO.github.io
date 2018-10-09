@@ -1,0 +1,27 @@
+{
+  "name": "ltm-proto.github.io",
+  "version": "1.0.0",
+  "description": "My blog",
+  "main": "index.js",
+  "directories": {
+    "jsonp": "jsonp"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LTM-PROTO/LTM-PROTO.github.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LTM-PROTO/LTM-PROTO.github.io/issues"
+  },
+  "homepage": "https://github.com/LTM-PROTO/LTM-PROTO.github.io#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "ws": "^6.1.0"
+  },
+  "devDependencies": {}
+}
