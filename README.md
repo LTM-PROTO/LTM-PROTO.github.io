@@ -2,4 +2,4 @@
 My blog
 
 
-[初始化](http://htmlpreview.github.io/?https://github.com/LTM-PROTO/LTM-PROTO.github.io/blob/master/index.html)<br>
+[初始化](https://ltm-proto.github.io/)<br>
